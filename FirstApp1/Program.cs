@@ -19,8 +19,30 @@ namespace FirstApp1
                 brojevi[i] = Int32.Parse(pojedinacniUlazi[i]);
 
 
-            for (int i = 0; i < 6; i++)
-                Console.WriteLine(brojevi[i]);
+            //for (int i = 0; i < 6; i++)
+             //   Console.WriteLine(brojevi[i]);
+
+            // obrada podataka
+            bool pozitivni = true;
+            int[] neparni = new int[6];
+            int brojNeparnih = 0;
+            // prolazak kroz sve elemente niza
+            foreach (var element in brojevi)
+            {
+                if (element <= 0)
+                    pozitivni = false;
+                if (element % 2 != 0)
+                {
+                    neparni[brojNeparnih] = element;
+                    brojNeparnih++;
+                }
+            }
+
+            // prikaz rezultata
+            string prikaz = pozitivni == true ? "nema" : "ima";
+            Console.WriteLine(" Među unesenim brojevima " + prikaz + " negativnih brojeva.");
+           
+            Console.WriteLine(" Neparni brojevi: " + string.Join(" ", neparni[0..brojNeparnih] ));
 
         }
     }
